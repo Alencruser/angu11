@@ -1,1 +1,17 @@
-<p>login works!</p>
+<div class="container ">
+    <form class="">
+        <div class="mt-3 mb-3 row">
+            <div class="col-xs-12 col-md-6 offset-md-3">
+                <label for="exampleInputEmail1" name="username"  class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-xs-12 col-md-6 offset-md-3">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                <input type="password" name="pass" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" class="form-control" autocomplete="on">
+            </div>
+        </div>
+        <button type="button" (click)="this.breadcrumb!='login'?register():login()" class="btn btn-primary offset-md-3">{{this.breadcrumb!='login'?"S\'enregistrer":'Se connecter'}}</button>
+      </form>
+</div>
