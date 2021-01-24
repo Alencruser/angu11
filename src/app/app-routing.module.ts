@@ -5,7 +5,21 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path:'login',
-    component:  LoginComponent
+    component:  LoginComponent,
+    data: {
+      breadcrumb: 'login'
+    }
+  },
+  {
+    path:'register',
+    component: LoginComponent,
+    data : {
+      breadcrumb:'register'
+    }
+  },
+  {
+    path:'**',
+    redirectTo:'/'
   }
 ];
 
