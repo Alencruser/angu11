@@ -27,7 +27,19 @@ export class AuthenticationService {
    }
 
    login(data){
+    return this.http.post(this.url+'/login',
+     data,
+     {
+       headers:
+        {
+          'Access-Control-Allow-Origin': '*'
+        }
+    })
+     .subscribe(response=>response);
+   }
 
+   isConnected() {
+     return this.http.get(this.url+'/isConnected').subscribe(response=>response);
    }
 
 }
