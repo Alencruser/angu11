@@ -24,15 +24,15 @@
         </a>
         <a href="/logout">
           <!-- ici faire un click sur bouton pour appeler une fonction de deconnexion plutot que une route, et redirect sur / -->
-          <button class="btn btn-outline-error">Deconnexion</button>
+          <button class="btn btn-outline-danger">Deconnexion</button>
         </a>
       </div>
       <div *ngIf="!connected" class="d-flex">
         <a href="/login">
           <button class="btn btn-outline-info">Connexion</button>
         </a>
-        <a href="/inscription" class='ms-4'>
-          <button class="btn btn-outline-danger">Deconnexion</button>
+        <a href="/register" class='ms-4'>
+          <button class="btn btn-outline-success">Inscription</button>
         </a>
       </div>
     </div>
