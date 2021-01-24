@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   
-  private http; 
 
-  constructor() {
-    this.http = HttpClient;
+  constructor(private http:HttpClientModule) {
    }
 
-   register(){
-    
+   register(data):void{
+     console.log('je recois les données service '+JSON.stringify(data))
+   }
+
+   login(data){
+
    }
 
 }
