@@ -3,19 +3,25 @@ const express = require('express'),
     session = require('express-session'),
     mysql = require('mysql2'),
     secure = require('./secure.js'),
+    cors = require('cors'),
+    bodyParser = require('body-parser'),
     connect = secure.connection,
     sessionKey = secure.sessionKey,
-    connection = mysql.createConnection(connection);
+    connection = mysql.createConnection(connect);
 
-app.post('/register',()=>{
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+app.post('/register', (req, res) => {
+    console.log(req.body);
+});
+
+app.post('/login', (req, res) => {
 
 });
 
-app.post('/login',()=>{
-
-});
-
-app.get('/logout',()=>{
+app.get('/logout', (req, res) => {
     // destroy la session id concernée
 });
 
