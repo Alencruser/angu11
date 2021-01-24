@@ -8,12 +8,14 @@ import { AuthGuardComponent } from './login/authGuard.component';
 import { AuthenticationService } from './services/authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AuthGuardComponent
+    AuthGuardComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,
