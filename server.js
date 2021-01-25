@@ -1,12 +1,10 @@
 const express = require('express'),
     app = express(),
-    session = require('express-session'),
     mysql = require('mysql2'),
     secure = require('./secure.js'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
     connect = secure.connection,
-    sessionKey = secure.sessionKey,
     connection = mysql.createConnection(connect);
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,14 +12,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use(session({
-    secret: sessionKey,
-    resave: true,
-    saveUninitialized: true
-}
-));
-
-let sess;
 
 let blbl = (str) => {
     if (str == null) return '';
@@ -47,7 +37,6 @@ date = date.getFullYear() + '-' +
 app.post('/register', (req, res) => {
     let username = blbl(req.body.username);
     let pass = blbl(req.body.password);
-    sess = req.session;
     connection.query(`INSERT INTO Users (username,pass,created_at) VALUES ('${username}','${pass}','${date}')`, (error, results, fields) => {
         if (error) console.log(error);
         else {
@@ -59,7 +48,6 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    sess = req.session;
     console.log(req.body)
     let username = blbl(req.body.username);
     let pass = blbl(req.body.password);
@@ -78,16 +66,6 @@ app.post('/login', (req, res) => {
     })
 });
 
-app.get('/logout', (req, res) => {
-    // destroy la session id concernée
-    req.session.destroy((err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.status(200);
-        }
-    });
-});
 
 app.listen('8080', () => {
     console.log('server listening on port 8080')
