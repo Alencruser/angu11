@@ -89,9 +89,10 @@ app.get('/logout', (req, res) => {
     });
 });
 
-app.get('/isConnect', (req,res)=>{
+app.get('/isConnected', (req,res)=>{
     sess=req.session;
-    return sess.username.length>0;
+    console.log('isconnect',sess.username.length>0)
+    res.json(sess.username.length>0);
 })
 
 app.listen('8080', () => {
