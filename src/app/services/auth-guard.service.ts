@@ -15,9 +15,9 @@ export class AuthGuardService implements CanActivate {
     //check some condition  
     if (!sessionStorage.getItem('username')) {
       alert('You are not allowed to view this page');
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
 }
