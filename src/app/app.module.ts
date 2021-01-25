@@ -11,12 +11,14 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
