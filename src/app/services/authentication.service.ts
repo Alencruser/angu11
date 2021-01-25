@@ -40,7 +40,7 @@ export class AuthenticationService {
        if(response!=false){
          console.log(response);
          sessionStorage.setItem('username',JSON.stringify(response));
-         this.router.navigate(['/'])
+         window.location.reload();
        }
       });
    }
