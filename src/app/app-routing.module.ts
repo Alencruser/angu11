@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticlesComponent } from './articles/articles.component';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './services/authentication.service';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
   {
     path:'create',
     component:ArticlesComponent,
-    //canActivate: []
+    canActivate: [AuthenticationService.isConnected()]
   },
   {
     path:'**',
