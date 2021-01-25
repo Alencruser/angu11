@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -14,13 +14,16 @@ export class LoginComponent implements OnInit {
   public username;
   public pass;
 
-  constructor(private route:ActivatedRoute,private auth:AuthenticationService) {
+  constructor(private route:ActivatedRoute,private auth:AuthenticationService,private router:Router) {
     this.breadcrumb = this.route.snapshot.data['breadcrumb'];
     this.username = "";
     this.pass = "";
    }
 
   ngOnInit(): void {
+    if(typeof sessionStorage.getItem('username') != 'object'){
+      this.router.navigate(['/']);
+    }
   }
 
   register(){
