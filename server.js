@@ -56,11 +56,11 @@ app.post('/login', (req, res) => {
             console.log(error);
         } else {
             if (pass == results[0].pass) {
-                sess.username = username;
                 res.status(200);
                 res.json(username)
             }else{
                 res.status(503);
+                res.json(false);
             }
         }
     })
