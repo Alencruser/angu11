@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
             if (pass == results[0].pass) {
                 sess.username = username;
                 res.status(200);
-                res.json('Connected')
+                res.json(username)
             }else{
                 res.status(503);
             }
@@ -88,12 +88,6 @@ app.get('/logout', (req, res) => {
         }
     });
 });
-
-app.get('/isConnected', (req,res)=>{
-    sess=req.session;
-    console.log('isconnect',sess.username.length>0)
-    res.json(sess.username.length>0);
-})
 
 app.listen('8080', () => {
     console.log('server listening on port 8080')

@@ -38,8 +38,5 @@ export class AuthenticationService {
      .subscribe(response=>response);
    }
 
-   isConnected() {
-     return this.http.get(this.url+'/isConnected').subscribe(response=>response);
-   }
 
 }
