@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthenticationService {
   private url;
   
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,private router:Router) {
     this.url = 'http://localhost:8080'
    }
 
@@ -35,7 +36,17 @@ export class AuthenticationService {
           'Access-Control-Allow-Origin': '*'
         }
     })
-     .subscribe(response=>response);
+     .subscribe(response=>{
+       if(response!=false){
+         console.log(response);
+         sessionStorage.setItem('username',JSON.stringify(response));
+         this.router.navigate(['/'])
+       }
+      });
+   }
+
+   logout(){
+     sessionStorage.removeItem('username');
    }
 
 
